@@ -1,68 +1,40 @@
 <?php
-function my_iud($query)
-{
-
-$c=mysqli_connect("localhost","root","") or die('Connection Failed');
-
-mysqli_select_db($c,"booktablephp");
-
-mysqli_query($c,$query);
-
-
-$n=mysqli_affected_rows($c);
-mysqli_close($c);
-return $n;
-}
-
-function my_login($query)
-{
-
-$c=mysqli_connect("localhost","root","") or die('Connection Failed');
-
-mysqli_select_db($c,"booktablephp");
-
-$data=mysqli_query($c,$query);
-
-
-$row=mysqli_fetch_array($data);
-
-mysqli_close($c);
-return $row[0];
-}
-
-function verifyuser()
-{
-	$u="";
-	$p="";
-	if(isset($_COOKIE['contactnumber']) && isset($_COOKIE['password']))
-	{
-		$u=$_COOKIE['ccontactnumber'];
-		$p=$_COOKIE['password'];
+	function consoleLog($error) {
+		echo ("<script>console.log('" . $error . "');</script>");
+		#Comment out this echo if you don't want to log every dang thing
 	}
-	else
-	{
-		$u=$_SESSION['sun'];
-		$p=$_SESSION['spwd'];
-	}
-	$query="select count(*) from users where contactnumber='$u' and password='$p'";
-	$n=my_login($query);
-	if($n==1)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
 
-function my_select($query)
-{
-$c=mysqli_connect("localhost","root","") or die('Connection Failed');
-mysqli_select_db($c,"booktablephp");
-$data=mysqli_query($c,$query);
-mysqli_close($c);
-return $data;
-}
+	function getDB() {
+		session_start();
+		$server = "localhost";
+		$username = "reservation";
+		$password = "12345@BCDE";
+		$db = "reservation";
 
+		$conn = new mysqli($server, $username, $password, $db);
+
+		if ($conn->connect_error) {
+			die("Connection failed: " . $conn->connect_error);
+			consoleLog("Failed to connect to database");
+			echo ("Error connecting to database. If you get this error again, please contact website administrators.<b>");
+			return False;
+		} else {
+			consoleLog("Created database connection");
+			return $conn;
+		}
+	}
+
+	function exists($var) {
+		if ($var != False) {
+			consoleLog($var . " exists, returning True.");
+			return True;
+		} else {
+			return False;
+		}
+	}
+
+	function cleanInput($string) {
+		consoleLog("Cleaning input");
+		return preg_replace('/[^A-Za-z0-9\s\-]/', '', $string);
+	}
 ?>
