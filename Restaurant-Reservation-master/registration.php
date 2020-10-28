@@ -21,6 +21,7 @@
 	$email = $password = $cpassword = $fname = $lname = "";
 	$email_err = $password_err = $cpassword_err = $fname_err = $lname_err = "";
 	$error = "";
+	$userType = "";
 
 	// Processing form data when form is submitted
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -59,6 +60,8 @@
 		} else{
 			$lname = strtolower(trim($_POST["lname"]));
 		}
+
+		$userType = $_POST["userType"];
 
 		// Validate credentials
 		if(empty($email_err) && empty($password_err) && empty($cpassword_err) && empty($lname_err) && empty($fname_err)){
@@ -119,6 +122,10 @@
 	<input type="password" name="password" class="form-control" placeholder="Enter your Password" required>
 	<label><b>Confirm Password</b></label>
 	<input type="password" name="cpassword" class="form-control" placeholder="Enter confirm your Password" required>
+	<input type="radio" id="customer" name ="userType" value="customer" checked>
+	<label for="customer"><b>Customer</b></label><br>
+	<input type="radio" id="manager" name="userType" value="manager">
+	<label for="manager"><b>Manager</b></label>
 	<br>
 	<input type="submit" value="Submit" name="submit" class="btn btn-primary">
 	<div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $error; ?></div>
