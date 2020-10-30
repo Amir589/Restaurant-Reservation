@@ -31,13 +31,13 @@
 <?php include "nav_1.php"; ?>
 
 <div class="container" style="margin-top:100px">
-<h1 class="text-center" style="font-family:'Monotype Corsiva'; color:800080">User Login</h1>
+<h1 class="text-center" style="font-family:'Monotype Corsiva'; color:18507F">User Login</h1>
 
   <div id="header"></div>
 
     <body>
       <h1>Hello! You're currently logged in as <?php echo $login_session; ?></h1> 
-      <h2><a href = "logout.php">Sign Out</a></h2>
+      <h2><a href = "logout.php" style="color: white">Sign Out</a></h2>
     </body>
 
   <div id="footer"></div>

@@ -70,7 +70,6 @@
 
 			$result = mysqli_query($connection, $sql);
 			$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-			$active = $row['userEmail'];
 		
 			$count = mysqli_num_rows($result);
 		

@@ -19,7 +19,7 @@
        <?php include "nav_1.php"; ?>
 
 	   <div class="container" style = "margin-top : 100px">
-	   <h1 class="text-center" style="font-family:'Monotype Corsiva'; color:800080;">Contact Us</h1>
+	   <h1 class="text-center" style="font-family:'Monotype Corsiva'; color:#18507F;">Contact Us</h1>
 	   <br>
 	   <div class=row>
    <div class="col-md-3 d-flex">

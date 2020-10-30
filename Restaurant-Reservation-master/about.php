@@ -14,7 +14,7 @@
 <?php include "nav_1.php"; ?>
 
           <div class="container" style = "margin-top : 100px">
-      <h2 class = text-center style = "font-family : 'Monotype Corsiva' ; color : 800080">About Us</h2>
+      <h2 class = text-center style = "font-family : 'Monotype Corsiva' ; color : 18507F">About Us</h2>
       <div class="row">
           <div class="col-sm-4">
               <img src="images/book.jpg" width=300 height = 250 class="img-responsive">        

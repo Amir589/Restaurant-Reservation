@@ -9,13 +9,25 @@ create database reservation;
 
 use reservation;
 
--- create table users
+-- create users table
 drop table if exists Users;
 create table Users (
 userEmail varchar(255) not null primary key,
 userPass varchar(255),
 userFName varchar(255), 
 userLName varchar(255),
-userStatus varchar(20)
+userStatus varchar(20),
+userRole varChar(50)
+);
+
+-- create reservation table
+drop table if exists Reservation;
+create table Reservation (
+reserveID int not null auto_increment primary key,
+reserveGuest int,
+reserveDate date,
+reserveTime varchar(255),
+userEmail varchar(255),
+foreign key (userEmail) references Users(userEmail)
 );
 

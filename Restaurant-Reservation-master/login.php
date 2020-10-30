@@ -5,7 +5,7 @@
         session_start(); 
     } 
 		
-	// Check if the user is already logged in, if yes then redirect him to login stat page
+	// Check if the user is already logged in, if yes then redirect them to login stat page
 	if(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true){
 		header("location: loginstat.php");
 		exit;
@@ -74,7 +74,7 @@
 <?php include "nav_1.php"; ?>
 
 <div class="container" style="margin-top:100px">
-<h1 class="text-center" style="font-family:'Monotype Corsiva'; color:800080">User Login</h1>
+<h1 class="text-center" style="font-family:'Monotype Corsiva'; color:18507F">User Login</h1>
 
 <form action="login.php" method="POST">
 	<div class="form-group">
