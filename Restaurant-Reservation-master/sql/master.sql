@@ -16,8 +16,7 @@ userEmail varchar(255) not null primary key,
 userPass varchar(255),
 userFName varchar(255), 
 userLName varchar(255),
-userStatus varchar(20),
-userRole varChar(50)
+userRole varchar(50)
 );
 
 -- create reservation table
@@ -28,6 +27,7 @@ reserveGuest int,
 reserveDate date,
 reserveTime varchar(255),
 userEmail varchar(255),
+flagCancelled boolean default false,
 foreign key (userEmail) references Users(userEmail)
 );
 

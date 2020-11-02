@@ -5,7 +5,6 @@
 	}
 
 	function getDB() {
-		session_start();
 		$server = "localhost";
 		$username = "reservation";
 		$password = "12345@BCDE";

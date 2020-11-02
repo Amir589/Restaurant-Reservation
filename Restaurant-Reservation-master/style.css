@@ -1,0 +1,305 @@
+.center {
+	margin: 0;
+	position: absolute;
+	top: 45%;
+  	left: 50%;
+  	-ms-transform: translate(-50%, -50%);
+  	transform: translate(-50%, -50%);
+}
+
+.header {
+	overflow: hidden;
+	background: #18507F;
+	/*background: url('images/reserve.jpg') no-repeat center center fixed;*/
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	padding: 20px 10px;
+	border-radius: 12px;
+}
+
+.header a {
+	float: left;
+	color: rgb(255, 255, 255);
+	text-align: center;
+	padding: 12px;
+	text-decoration: none;
+	font-size: 18px;
+	line-height: 25px;
+	border-radius: 12px;
+}
+
+.header a.logo {
+	font-size: 25px;
+	font-weight: bold                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ;
+}
+
+.header a:hover {
+	background-color: rgb(255, 255, 255);
+	color: black;
+}
+
+.header-middle {
+	float: left;
+	color: rgb(255, 255, 255);
+	background-color: #18507F;
+	text-align: center;
+	padding: 12px;
+	text-decoration: none;
+	font-size: 18px;
+	line-height: 25px;
+	border: none;
+}
+
+.header-right {
+	float: right;
+}
+
+.footer {
+	height: 70px;
+	text-align: center;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+}
+
+input:focus  {
+	box-shadow: 0 0 5px rgb(97, 97, 97);
+	border: 1px solid rgb(129, 129, 129);
+	outline: none;
+}
+
+input[type=text] {
+	padding: 8px;
+	margin: 4px 2px;
+	display: inline-block;
+	border: .5px solid rgb(129, 129, 129);
+	border-radius: 12px;
+	box-sizing: border-box;
+}
+
+input[type=password] {
+	padding: 8px;
+	margin: 4px 2px;
+	display: inline-block;
+	border: .5px solid rgb(129, 129, 129);
+	border-radius: 12px;
+	box-sizing: border-box;
+}
+
+input[type=email] {
+	padding: 8px;
+	margin: 4px 2px;
+	display: inline-block;
+	border: .5px solid rgb(129, 129, 129);
+	border-radius: 12px;
+	box-sizing: border-box;
+}
+  
+input[type=submit] {
+	background-color: #18507F;
+	color: white;
+	padding: 8px;
+	border: none;
+	text-align: center;
+	font-size: 12px;
+	margin: 4px 2px;
+	border-radius: 12px;
+	border: .5px solid #18507F;
+	cursor: pointer;
+}
+  
+input[type=submit]:hover {
+	background-color: white;
+	color: black;
+	border: .5px solid #18507F;
+}
+
+.h2 {
+	font-family : 'Monotype Corsiva'; 
+	color : black;
+}
+
+.text {
+	font-weight : bold; 
+	margin-top : 30px;
+}
+
+.img {
+	background-image: url('images/seatingimage.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+/* for display page */
+.article {
+	width: 80%;
+	padding: 20px;
+	background-color: #ffffff;
+	border: .5px solid #d4d4d4;
+	border-radius: 12px;
+	margin: auto;
+}
+
+@font-face {
+	font-family: Code_Bold;
+	src: url("font/CODE Bold.otf");
+}
+
+* {
+	font-family: Futura, Trebuchet MS, Arial, sans-serif;
+}
+
+.button {
+	font-size: 24px;
+	width: 50%; 
+	height: 100px;
+	background-color: #18507F;
+	padding: 15px 32px;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+}
+
+.button_div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.backg {
+	background-color: white;
+	background-size: cover;
+	border-radius: 12px;
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+html,body {
+	width:100%;
+	height:100%;
+}
+
+body {
+	margin: 0;
+	padding-bottom:70px;
+	background-image: url('images/seatingimage.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	opacity: 0.75;
+}
+
+.container {
+	width:100%;
+	height:75%;
+	padding-bottom:70px;
+}
+
+#slideshow {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	width:100%;
+	height:100%;
+	display: inline-block;
+}
+
+.elemnt,.elemnt1,.elemnt2,.elemnt3,.elemnt4 {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100%;
+	display: inline-block;
+	text-align: center;
+	opacity: 1;
+}
+  
+span {
+	border: 1px solid #000;
+	border-radius: 3px;
+	box-shadow: 0 0 5px 0 hsla(0,0%,30%, .3);
+	font-size:4em;
+	background-color:#fff
+}
+  
+.elemnt {
+	animation: xfade 16s 8s infinite;
+	background-image: url("images/background.jpg");
+}
+  
+.elemnt1 {
+	animation: xfade 16s 4s infinite;
+	background-image: url("images/table-reservation.jpg");
+}
+  
+.elemnt2 {
+	animation: xfade 16s 2s infinite;
+	background-image: url("images/minneapolis.jpg");
+}
+  
+.elemnt3 {
+	animation: xfade 16s 0s infinite;
+	background-image: url("images/seatingimage.jpg");
+	
+}  
+
+.elemnt4 {
+	animation: xfade 16s 2s infinite;
+	background-image: url("images/res.jpg");
+	
+}
+
+@keyframes xfade{
+	0% {
+		animation-timing-function: ease-in;
+		opacity: 0;
+	}
+	8% {
+		animation-timing-function: ease-out;
+		opacity: 1;
+	}
+	17% {
+		opacity: 1
+	}
+	25% {
+		opacity: 0
+	}
+		100% {
+		opacity: 0
+	}
+}
+
+#booking {
+	font-family: Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+  
+#booking td, #booking th {
+	border: 1px solid rgb(133, 133, 133);
+	padding: 8px;
+}
+  
+#booking tr:nth-child(even){
+	  background-color: #dddddd;
+}
+  
+#booking tr:hover {
+	background-color: #C5D3DF;
+}
+  
+#booking th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #18507F;
+	color: white;
+}

@@ -34,9 +34,7 @@
     <!-- content -->
     <body>
       <center>
-        <div  class="center backg">
-            <div><h1>Hello <?php echo ucfirst(strtolower($_SESSION["login_fname"])); ?>! You're logged in!</h1></div>
-        </div>
+        <h1>Thank you! Your reservation is set for <?php echo date("m-d-yy",strtotime($_SESSION["login_date"])); ?> at <?php echo date( 'g:i A', strtotime($_SESSION["login_time"])); ?> for <?php echo $_SESSION["login_guest"]; ?> guests.</h1> 
       </center>
     </body>
 	  <!-- // content -->

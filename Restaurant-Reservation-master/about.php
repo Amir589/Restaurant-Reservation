@@ -1,40 +1,46 @@
+<!DOCTYPE HTML>
+<html>
 
-<html lang="en">
-<head>
-  <?php include "header.php"; ?>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script> 
+        $(function(){
+            $("#header").load("header.php"); 
+            $("#footer").load("footer.html"); 
+        });
+    </script>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <div id="header"></div>
+    <div id="footer"></div>
 
-<body style = "background-color: 808080">
-<?php include "nav_1.php"; ?>
-
-          <div class="container" style = "margin-top : 100px">
-      <h2 class = text-center style = "font-family : 'Monotype Corsiva' ; color : 18507F">About Us</h2>
-      <div class="row">
-          <div class="col-sm-4">
-              <img src="images/book.jpg" width=300 height = 250 class="img-responsive">        
+    <head>
+        <title>Restaurant Reservation</title>
+    </head>
+    <!-- content -->
+    <body>
+      <center>
+        <div class="center backg">
+          <div>
+            <h2 class="h2">About Us</h2>
+            <div>
+              <div>
+                <img src="images/book.jpg" width=300 height = 250 class="img-responsive">        
+              </div>
+              <div class="text">
+                <p>Our Gourmet Retaurant was founded in Belgium. Today it is one of the Largest Franchises in Minnesota!</p> 
+                <p>We have been serving Minneapolis for over 50 years and continue to live and stand by our legacy.</p>
+                <p>We are proud of our fine dining.</p>
+                <h1 class="h2">Opening Hours</h1>
+                <p>Monday - Saturday 10:00 am - 11:00 pm</p>
+                <p>Sunday  12:00 pm - 10:00 pm</p>
+              </div>
+            </div>
           </div>
-          <div class="col-sm-8" style = "font-weight : bold ; margin-top : 30px">
-          <p>Our Gourmet Retaurant was founded in Belgium. Today it is one of the Largest Franchises in Minnesota! We have been serving Minneapolis for over 50 years and continue to live and stand by our legacy. 
-    <p>We are proud of our fine dining.</p>
-
-    <h1 class = text-center style = "font-family : 'Monotype Corsiva' ; color : 800080">Opening Hours</h1>
-    
-    <div class="w3-row">
-      <div class="w3-col s6">
-        <p>Monday - Saturday 10:00 am - 11:00 pm</p>
-        <p>Sunday  12:00 pm - 10:00 pm</p>
-      </div>
-    </div>
-          </div>
-      </div>
-  </div>
-     
-          
+        </div>
+      </center>
     </body>
+	  <!-- // content -->
+
 </html>

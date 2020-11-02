@@ -1,80 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
- 
-</head>
-<style>
-    .img {
-        height: 500px;
-        width: 100%;
-    }
-    .button {
-        font-size: 24px;
-        width: 50%; 
-        height: 100px;
-        background-color: #18507F;
-        padding: 15px 32px;
-        color: white;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-    }
-    .button_div {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-</style>
-<body >
-<?php include "nav_1.php"; ?>
-<div>
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <!-- Carousel indicators -->
-        <ul class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-            <li data-target="#myCarousel" data-slide-to="3"></li>
-            <li data-target="#myCarousel" data-slide-to="4"></li>
-        </ul>
-        <!-- Wrapper for carousel items -->
-        <div class="carousel-inner center" >
-            <div class="carousel-item active">
-                <img src="images/background.jpg " class="img">
-            </div>
-            <div class="carousel-item">
-                <img src="images/book a table.jpg " class="img">
-            </div>
-            <div class="carousel-item">
-                <img src="images/minneapolis.jpg" class="img">
-            </div>
-            <div class="carousel-item">
-                <img src="images/reserv.jpg" class="img">
-            </div>
-            <div class="carousel-item">
-                <img src="images/table-reservation.jpg" class="img">
-            </div>
-        </div>
-        <!-- Carousel controls -->
-        <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </a>
-        <a class="carousel-control-next" href="#myCarousel" data-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </a>
-    </div>
-</div>
-<form action="reserve.php" method="GET">
-    <div class="button_div">
-        <button type="submit" class="button">Click Here to Reserve Your Table!</button>
-    </div>
-</form>
+<!DOCTYPE HTML>
+<html>
 
-</body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
+	</script>
+    <script> 
+        $(function(){
+            $("#header").load("header.php"); 
+            $("#footer").load("footer.html"); 
+        });
+    </script>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <div id="header"></div>
+    <div id="footer"></div>
+    <div class="container">
+        <div id="slideshow">
+            <div class="elemnt"></div>
+            <div class="elemnt1"></div>
+            <div class="elemnt2"></div>
+            <div class="elemnt3"></div>
+            <div class="elemnt4"></div>
+        </div>
+    </div>
+
+    <head>
+        <title>Restaurant Reservation</title>
+    </head>
+
+    <!-- content -->
+	<body>
+        <div class="center"> 
+                <div class="header"><a href="reserve.php" class="logo">Reserve a Table Now</a></div>
+        </div>
+	</body>
+	<!-- // content -->
+
 </html>

@@ -5,7 +5,7 @@
         session_start(); 
     } 
 		
-	// Check if the user is already logged in, if yes then redirect them to login stat page
+	// Check if the user is already logged in, if yes then redirect him to login stat page
 	if(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true){
 		header("location: loginstat.php");
 		exit;
@@ -42,56 +42,82 @@
 		// Validate credentials
 		if(empty($username_err) && empty($password_err)){
 
-			$sql = "SELECT userpass FROM users WHERE lower(useremail) = '$email';";
+			$sql = "SELECT userpass, userFName, userRole FROM users WHERE lower(useremail) = '$email';";
 			$result = mysqli_query($connection, $sql);
 			$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-			$sqlpass = $row['userpass'];
+			$count = mysqli_num_rows($result);
+			if($count == 1) {
+				$sqlpass = $row['userpass'];
+				$sqlfname = $row['userFName'];
+				$sqlrole = $row['userRole'];
+				
+				// Verify password
+				if(password_verify($password, $sqlpass)){
+					$_SESSION["logged_in"] = true;
+					$_SESSION["login_user"] = $email;
+					$_SESSION["login_fname"] = $sqlfname;
+					$_SESSION["login_role"] = $sqlrole;
 
-			// Verify password
-			if(password_verify($password, $sqlpass)){
-				$_SESSION["logged_in"] = true;
-				$_SESSION["login_user"] = $email;
-
-				header("location: loginstat.php");
+					header("location: loginstat.php");
+					exit;
+				} else {
+					$error = "Your Email or Password is invalid";
+				}
 			} else {
-			$error = "Your Email or Password is invalid";
+				$error = "Your Email or Password is invalid";
 			}
 		}
 	}
 ?>
-<html lang="en">
-<head>
-  <?php include "header.php"; ?>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!DOCTYPE HTML>
+<html>
 
-</head>
-<body style = "background-color: 808080">
-<?php include "nav_1.php"; ?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script> 
+        $(function(){
+            $("#header").load("header.php"); 
+            $("#footer").load("footer.html"); 
+        });
+    </script>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <div id="header"></div>
+    <div id="footer"></div>
 
-<div class="container" style="margin-top:100px">
-<h1 class="text-center" style="font-family:'Monotype Corsiva'; color:18507F">User Login</h1>
+    <head>
+        <title>Reservation</title>
+    </head>
+    <!-- content -->
+    <body>
+      <center>
+        <div class="center backg">
+          <div>
+          	<h2 class="h2">User Login</h2>
+			<form action="login.php" method="POST">
+				<div>
+					<label><b>Email Address</b></label>
+					<input type="text" name="email" placeholder="Enter your Email Address" required>
+				</div>
+				<div>
+					<label><b>Password</b></label>
+					<input type="password" name="password" placeholder="Enter your Password" required>
+				</div>
+				<br>
+				<div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $error; ?></div>
+				<div>
+				<!-- <input type="checkbox"> Remember me -->
+					<input type="submit" name="login" value="Login">
+				</div>
+				<div>
+					<label>No Account? Click <a href="registration.php">here</a> to register.</label>
+				</div>
+			</form>
+          </div>
+        </div>
+      </center>
+    </body>
+	  <!-- // content -->
 
-<form action="login.php" method="POST">
-	<div class="form-group">
-	<label><b>Email Address</b></label>
-	<input type="text" name="email" class="form-control" placeholder="Enter your Email Address" required>
-		</div>
-	<label><b>Password</b></label>
-	<input type="password" name="password" class="form-control" placeholder="Enter your Password" required>
-	<br>
-	<div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $error; ?></div>
-	<!-- <input type="checkbox"> Remember me -->
-	<br><br>
-	<input type="submit" name="login" value="Login" class="btn btn-primary">
-	<a href="registration.php" class="btn btn-secondary">Signup</a>
-	</div>
-</form>
-
-</div>
-</body>
 </html>
