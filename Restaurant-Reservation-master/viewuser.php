@@ -14,35 +14,34 @@
     $email = "";
     $error = "";
 
-    if(isset($_SESSION["login_role"]) && $_SESSION["login_role"] == "manager"){
-        $email = "%";
-    } else if(isset($_SESSION['login_user'])){
-        $email = $_SESSION['login_user'];
+    if(isset($_SESSION["login_role"]) && $_SESSION["login_role"] == "customer"){
+        header("location: login.php");
+        exit;
     }
 
 	// connection
 	include 'db_config.php'; 
 	$connection = getDB();
 
-    // pull reservations
-    $query = "SELECT u.userEmail, u.userFName, u.userLName, r.reserveDate, r.reserveTime, r.reserveGuest, r.reserveid
-              FROM reservation r 
-                JOIN users u ON r.userEmail = u.userEmail 
-              WHERE r.flagCancelled = false
-                and r.userEmail LIKE '" . $email . "'
-              ORDER BY reserveDate DESC, reserveTime DESC";
+    // pull users
+    $query = "SELECT u.userEmail, u.userFName, u.userLName, u.userRole, u.flagActive
+              FROM users u
+              ORDER BY u.userRole DESC, u.flagActive DESC, u.userLName asc, u.userFName asc";
     $result = mysqli_query($connection,$query);
 
     $count = mysqli_num_rows($result);
 
-    $email = $password = $cpassword = $fname = $lname = $type = "";
-	$email_err = $password_err = $cpassword_err = $fname_err = $lname_err = $type_err = "";
-	$error = "";
-
-    // update reservation to cancel
+    // update users to deactivate
     if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-        $update = "UPDATE reservation SET flagCancelled = true WHERE reserveid = '" . $_POST["reserveid"] . "'";
+        if (isset($_POST["Deactivate"])) {
+            $update = "UPDATE users SET flagActive = false WHERE userEmail = '" . $_POST["userEmail"] . "'";
+        } elseif (isset($_POST["Activate"])) {
+            $update = "UPDATE users SET flagActive = true WHERE userEmail = '" . $_POST["userEmail"] . "'";
+        } elseif (isset($_POST["defaultPass"])) {
+            $hash_pass = password_hash("password", PASSWORD_DEFAULT);
+            $update = "UPDATE users SET flagActive = true, userPass = '$hash_pass' WHERE userEmail = '" . $_POST["userEmail"] . "'";
+        }
 
         if (mysqli_query($connection,$update)) {
             header("Refresh:0");
@@ -76,20 +75,22 @@
             <?php 
                 echo "<table id='booking'>"; 
                 echo "<tr>
-                        <th>Reservation Date</th>
-                        <th>Reservation Time</th>
-                        <th>Reservation Name</th>
-                        <th>Number of Guests</th>
+                        <th>User Email</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>User Role</th>
                         <th>Action</th>
                       </tr>" ;
                 while($row = mysqli_fetch_array($result)){
-                    echo "<form action='view.php' method='POST' onsubmit='return confirm('Are you sure you want to cancel your reservation? Click OK to proceed');'> 
+                    echo "<form action='viewuser.php' method='POST'> 
                           <tr>
-                            <td>" . date("m-d-yy",strtotime($row['reserveDate'])) . "</td>
-                            <td>" . date( 'g:i A', strtotime($row['reserveTime'])) . "</td>
-                            <td>" . $row['userFName'] . " " . $row['userLName'] . "</td>
-                            <td>" . $row['reserveGuest'] . "</td>
-                            <td> <input type='hidden' name='reserveid' value=" . $row['reserveid'] . "><input type='submit' name='Cancel' value='Cancel'> </td>
+                            <td>" . $row['userEmail'] . "</td>
+                            <td>" . $row['userFName'] . "</td>
+                            <td>" . $row['userLName'] . "</td>
+                            <td>" . $row['userRole'] . "</td>
+                            <td> <input type='submit' name='" . ($row['flagActive'] == true ? 'Deactivate' : 'Activate') . "' value='" . ($row['flagActive'] == true ? 'Deactivate' : 'Activate') . "'> 
+                                 <input type='submit' name='defaultPass' value='Reset Default Password'>
+                                 <input type='hidden' name='userEmail' value=" . $row['userEmail'] . "> </td>
                           </tr>
                           </form>";  
                 }

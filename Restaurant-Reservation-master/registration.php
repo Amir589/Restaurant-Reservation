@@ -83,13 +83,17 @@
 		
 			// If result matched $email, table row must be 1 row	
 			if($count == 1) {
-			$error = "email already exists.";
+				$error = "email already exists.";
 			} else{
-			$hash_pass = password_hash($password, PASSWORD_DEFAULT);
-			$qry = ("INSERT INTO users VALUES ('$email', '$hash_pass', '$fname', '$lname', '$type');");
-			$connection->Query($qry);
-
-			header("location: login.php");
+				$hash_pass = password_hash($password, PASSWORD_DEFAULT);
+				$qry = ("INSERT INTO users VALUES ('$email', '$hash_pass', '$fname', '$lname', '$type', true);");
+				$connection->Query($qry);
+			
+				if(isset($_SESSION["login_role"]) && $_SESSION["login_role"] == "manager"){
+					header("location: viewuser.php");
+				} else {
+					header("location: login.php");
+				}
 			}
 		} else{
 			$error = "Passwords did not match.";

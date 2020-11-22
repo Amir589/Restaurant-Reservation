@@ -1,16 +1,3 @@
-<?php
-    // Initialize the session
-    if(!isset($_SESSION)) 
-    { 
-        session_start(); 
-    } 
-    
-    // Check if the user is already logged in, if no then redirect them to login page
-    if(!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] === false){
-        header("location: login.php");
-        exit;
-    }
-?>
 <!DOCTYPE HTML>
 <html>
 
@@ -35,7 +22,7 @@
     <body>
       <center>
         <div class="center backg">
-            <h1>Thank you for your reservation on <?php echo date("m-d-yy",strtotime($_SESSION["login_date"])); ?> at <?php echo date( 'g:i A', strtotime($_SESSION["login_time"])); ?> for <?php echo $_SESSION["login_guest"]; ?> guests.</h1> 
+            <h1>Thank you! We will get in touch with you soon. </h1> 
         </div>
       </center>
     </body>

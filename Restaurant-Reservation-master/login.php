@@ -42,7 +42,7 @@
 		// Validate credentials
 		if(empty($username_err) && empty($password_err)){
 
-			$sql = "SELECT userpass, userFName, userRole FROM users WHERE lower(useremail) = '$email';";
+			$sql = "SELECT userpass, userFName, userRole FROM users WHERE flagActive = true and lower(useremail) = '$email';";
 			$result = mysqli_query($connection, $sql);
 			$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 			$count = mysqli_num_rows($result);

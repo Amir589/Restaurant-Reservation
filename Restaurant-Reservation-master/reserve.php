@@ -49,7 +49,7 @@
         
 		// Validate credentials
 		if(empty($guest_err) && empty($date_err) && empty($time_err)){
-			$sql = "SELECT reserveid FROM reservation WHERE reservedate = '$date' and reservetime = '$time'";
+			$sql = "SELECT reserveid FROM reservation WHERE flagCancelled = false and reservedate = '$date' and reservetime = '$time'";
 
 			$result = mysqli_query($connection, $sql);
 			$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
